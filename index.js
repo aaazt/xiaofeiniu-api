@@ -8,6 +8,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const categoryRouter = require('./routes/admin/category');
 const adminRouter = require('./routes/admin/admin')
+const dishRouter = require('./routes/admin/dish')
 
 //创建HTTP应用服务器
 var app=express();
@@ -23,3 +24,4 @@ app.use(bodyParser.json())//把JSON格式的请求主体数据解析出来放入
 //挂载路由器
 app.use('/admin/categroy',categoryRouter)
 app.use('/admin',adminRouter)
+app.use('/admin/dish',dishRouter)
