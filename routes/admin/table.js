@@ -1,7 +1,22 @@
+
+
+
+const express = require('express');
+const pool = require('../../pool.js');
+var router=express.Router();
+module.exports=router;
+
 /**
  * 获取所有桌台信息
  * GET /admin/table
+ * 返回数据：[{tid:xxx tname:'xxx',tatus:''}]
  */
+router.get('/',(req,res)=>{
+  pool.query('SELECT * FROM xfn_table ORDER BY tid',(err,result)=>{
+    if(err) throw err;
+    res.send(result);
+  })
+})
 
 
  /**
