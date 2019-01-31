@@ -42,7 +42,6 @@ router.get('/', (req, res)=>{
 *POST /admin/dish/image
 *请求参数：
 *接收客户端上传的菜品图片，保存在服务器上，返回该图片在服务器上的随机文件名
-*响应数据：{code:200,msg:'upload succ' fileName:1324566-2455.jpg}
 */
 //引入multer中间件
 const multer = require('multer');
@@ -75,35 +74,5 @@ function randFileName(suffix){
 
 /*
 *POST /admin/dish
-*请求参数：{title:'xx',imgUrl:'..jpg',price:xx,detail:'xx',category:xx}
-
 *添加一个新的菜品
-*输出消息：{code:200,msg:'dish added succ',dishId:46}
 */
-router.post('/',(req,res)=>{
-
-  //var data = req.body;
-  pool.query('INSERT INTO xfn_dish SET ?', req.body,(err,result)=>{
-    if(err) throw err;
-    res.send({code:200,msg:'dish added succ',dishId:result.insertId});//将insert语句产生的自增编号输出给客户端
-  })
-})
-
-/**
- * DELETE/admin/dish/:did
- * 根据指定的商品编号删除该商品
- * 输出数据
- * {code:200,msg:'dish deleted succ'}
- * {code:400,msg:'dish not exists'}
- */
-
-
-
- /**
- * PUT/admin/dish
- * 请求参数：{did:xx,title:'xx',imgUrl:'..jpg',price:xx,detail:'xx',categoryId:xx}
- * 根据指定的商品编号修改该商品
- * 输出数据
- * {code:200,msg:'dish deleted succ'}
- * {code:400,msg:'dish not exists'}
- */
